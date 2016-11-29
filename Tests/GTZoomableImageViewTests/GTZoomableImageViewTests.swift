@@ -24,22 +24,59 @@
 
 import Foundation
 import XCTest
-import GTZoomableImageView
+@testable import GTZoomableImageView
 
 class GTZoomableImageViewTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        //// XCTAssertEqual(GTZoomableImageView().text, "Hello, World!")
+    
+    var zoomableImageView: GTZoomableImageView?
+    
+    override func setUp() {
+        super.setUp()
+        zoomableImageView = GTZoomableImageView(frame: UIScreen.main.bounds)
+        guard let zoomableImageView = zoomableImageView else {
+            XCTFail("view is nil")
+            return
+        }
+        zoomableImageView.setup()
+    }
+    
+    func testInit() {
+        guard let zoomableImageView = zoomableImageView else {
+            XCTFail("view is nil")
+            return
+        }
+        zoomableImageView.layoutSubviews()
+        XCTAssert(zoomableImageView.frame == UIScreen.main.bounds, "Incorrect frame")
+    }
+    
+    func testZoomIn() {
+        guard let zoomableImageView = zoomableImageView else {
+            XCTFail("view is nil")
+            return
+        }
+        zoomableImageView.zoomIn(point: CGPoint(x: 0, y: 0), scale: 3.0, animated: false)
+        XCTAssert(zoomableImageView.isZoomed(), "Should be zoomed")
+    }
+    
+    func testZoomOut() {
+        guard let zoomableImageView = zoomableImageView else {
+            XCTFail("view is nil")
+            return
+        }
+        zoomableImageView.zoomOut()
+        XCTAssert(!zoomableImageView.isZoomed(), "Should be not zoomed")
+    }
+    
+    func testAutoZoom() {
+        guard let zoomableImageView = zoomableImageView else {
+            XCTFail("view is nil")
+            return
+        }
+        let doubleTap = UITapGestureRecognizer()
+        zoomableImageView.autoZoom(gesture: doubleTap)
+        XCTAssert(zoomableImageView.isZoomed(), "Should be zoomed")
+        zoomableImageView.autoZoom(gesture: doubleTap)
+        XCTAssert(!zoomableImageView.isZoomed(), "Should be not zoomed")
+        
     }
 }
-
-#if os(Linux)
-extension GTZoomableImageViewTests {
-    static var allTests : [(String, (GTZoomableImageViewTests) -> () throws -> Void)] {
-        return [
-            ("testExample", testExample),
-        ]
-    }
-}
-#endif
