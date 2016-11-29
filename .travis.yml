@@ -1,5 +1,8 @@
 language: objective-c
 osx_image: xcode8.1
+before_install:
+- gem update fastlane --no-ri --no-rdoc --no-document
+- gem update cocoapods --no-ri --no-rdoc --no-document
 script:
 - fastlane ci
 notifications:
