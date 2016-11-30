@@ -11,6 +11,7 @@ platform :ios do
   desc "Default CI lane"
   lane :ci do
     test
+    coverage
   end
 
   desc "Runs all the tests"
@@ -22,6 +23,15 @@ platform :ios do
     slack(
       default_payloads: [:git_author],
       message: "Successfully tested: "+git_branch+", commit: "+sh("git log --pretty=format:'%h' -n 1")+" :rocket:"
+    )
+  end
+
+  desc "Slather sends code coverage to Coveralls"
+  lane :coverage do
+    slather(
+      proj: "GTZoomableImageView.xcodeproj",
+      scheme: "GTZoomableImageView-iOS",
+      coveralls: true
     )
   end
 

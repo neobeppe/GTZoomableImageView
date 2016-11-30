@@ -16,6 +16,11 @@ Default CI lane
 fastlane ios test
 ```
 Runs all the tests
+### ios coverage
+```
+fastlane ios coverage
+```
+Slather sends code coverage to Coveralls
 ### ios clean
 ```
 fastlane ios clean
