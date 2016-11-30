@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/GTZoomableImageView.svg?style=flat)](http://cocoapods.org/pods/GTZoomableImageView)
 [![License](https://img.shields.io/cocoapods/l/GTZoomableImageView.svg?style=flat)](http://cocoapods.org/pods/GTZoomableImageView)
 [![Platform](https://img.shields.io/cocoapods/p/GTZoomableImageView.svg?style=flat)](http://cocoapods.org/pods/GTZoomableImageView)
+[![Coverage Status](https://coveralls.io/repos/github/neobeppe/GTZoomableImageView/badge.svg?branch=master)](https://coveralls.io/github/neobeppe/GTZoomableImageView?branch=master)
 
 ## Requirements
 
