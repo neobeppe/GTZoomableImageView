@@ -72,7 +72,7 @@ public final class GTZoomableImageView: UIView {
         }
     }
     
-    private func setup() {
+    internal func setup() {
         contentMode = .scaleAspectFit
         clipsToBounds = true
         isUserInteractionEnabled = true
