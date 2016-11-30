@@ -50,8 +50,8 @@ Note that the [Swift Package Manager](https://swift.org/package-manager) is stil
 
 To use this library in your project manually you may:
 
-1. for Projects, just drag SwiftyJSON.swift to the project tree
-2. for Workspaces, include the whole SwiftyJSON.xcodeproj
+1.  for Projects, just drag SwiftyJSON.swift to the project tree
+2.  for Workspaces, include the whole SwiftyJSON.xcodeproj
 
 ## Author
 
