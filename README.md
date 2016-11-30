@@ -50,12 +50,15 @@ Note that the [Swift Package Manager](https://swift.org/package-manager) is stil
 
 To use this library in your project manually you may:
 
-1.  for Projects, just drag SwiftyJSON.swift to the project tree
-2.  for Workspaces, include the whole SwiftyJSON.xcodeproj
+1.  for Projects, just drag GTZoomableImageView.swift to the project tree
+2.  for Workspaces, include the whole GTZoomableImageView.xcodeproj
 
-## Author
+## Usage
 
-Giuseppe Travasoni
+You can use GTZoomableImageView via Storyboard, where you can set the image, minimun and maximum zoom level directly in Attributes inspector.
+Otherwise you can create a new GTZoomableImageView programmatically with custom frame, and remember to assign an UIImage.
+
+Default maximum zoom level is 3, and minimum is 1.
 
 ## License
 
