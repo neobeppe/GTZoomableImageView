@@ -1,0 +1,43 @@
+
+fastlane_version "1.110.0"
+
+default_platform :ios
+
+platform :ios do
+  before_all do
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+  end
+
+  desc "Default CI lane"
+  lane :ci do
+    test
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    pod_lib_lint
+    scan(
+      device: "iPhone 7"
+    )
+    slack(
+      default_payloads: [:git_author],
+      message: "Successfully tested: "+git_branch+", commit: "+sh("git log --pretty=format:'%h' -n 1")+" :rocket:"
+    )
+  end
+
+  desc "Clean environment after all operations"
+  lane :clean do
+    clean_build_artifacts
+  end
+
+  after_all do |lane|
+    clean_build_artifacts
+  end
+
+  error do |lane, exception|
+    slack(
+      message: exception.message,
+      success: false
+    )
+  end
+end
