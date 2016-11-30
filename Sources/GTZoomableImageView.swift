@@ -29,16 +29,17 @@ public final class GTZoomableImageView: UIView {
     @IBInspectable public var image: UIImage? {
         didSet {
             imageView.image = image
+            setup()
         }
     }
-    @IBInspectable public var maximumZoomScale: CGFloat = 3.0
+    
     @IBInspectable public var minimumZoomScale: CGFloat = 1.0
+    @IBInspectable public var maximumZoomScale: CGFloat = 3.0
     
     internal let imageView = UIImageView()
     private let scrollImg = UIScrollView()
     
-    public func setup(image: UIImage? = nil) {
-        imageView.contentMode = .scaleAspectFit
+    public func setup(image: UIImage) {
         self.image = image
         setup()
     }
@@ -71,11 +72,12 @@ public final class GTZoomableImageView: UIView {
         }
     }
     
-    private func setup() {
+    internal func setup() {
         contentMode = .scaleAspectFit
         clipsToBounds = true
         isUserInteractionEnabled = true
         
+        imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
         imageView.clipsToBounds = false
         imageView.image = image
@@ -107,6 +109,16 @@ public final class GTZoomableImageView: UIView {
     
     internal func isZoomed() -> Bool {
         return scrollImg.zoomScale != scrollImg.minimumZoomScale
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
     }
     
 }
