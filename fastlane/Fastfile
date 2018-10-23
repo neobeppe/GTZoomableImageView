@@ -27,7 +27,7 @@ platform :ios do
     slather(
       proj: "GTZoomableImageView.xcodeproj",
       scheme: "GTZoomableImageView-iOS",
-      ignore: "Configs/*",
+      ignore: "Tests/*",
       coveralls: true
     )
   end
