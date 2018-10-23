@@ -79,4 +79,23 @@ class GTZoomableImageViewTests: XCTestCase {
         XCTAssert(!zoomableImageView.isZoomed(), "Should be not zoomed")
         
     }
+    
+    func testNilImage() {
+        guard let zoomableImageView = zoomableImageView else {
+            XCTFail("view is nil")
+            return
+        }
+        zoomableImageView.image = nil
+        XCTAssertNil(zoomableImageView.image, "Image should now be nil")
+        
+        zoomableImageView.setup(image: UIImage())
+        XCTAssertNotNil(zoomableImageView.image, "Image should now be not nil")
+    }
+    
+    func testInitWithCoder() {
+        let archiverData = Data()
+        let archiver = NSKeyedUnarchiver(forReadingWith: archiverData)
+        let zoomableImageViewWithCoder = GTZoomableImageView(coder: archiver)
+        XCTAssertNotNil(zoomableImageViewWithCoder, "GTZoomableImageView should be initialized")
+    }
 }

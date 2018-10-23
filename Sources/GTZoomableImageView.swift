@@ -64,12 +64,13 @@ public final class GTZoomableImageView: UIView {
         self.scrollImg.setZoomScale(minimumZoomScale, animated: animated)
     }
     
+    @objc
     func autoZoom(gesture: UITapGestureRecognizer) {
         if scrollImg.zoomScale > minimumZoomScale {
             zoomOut()
-        } else {
-            zoomIn(point: gesture.location(in: scrollImg), scale: maximumZoomScale)
+            return
         }
+        zoomIn(point: gesture.location(in: scrollImg), scale: maximumZoomScale)
     }
     
     internal func setup() {
@@ -82,11 +83,8 @@ public final class GTZoomableImageView: UIView {
         imageView.clipsToBounds = false
         imageView.image = image
         
-        let vWidth = self.frame.width
-        let vHeight = self.frame.height
-        
         scrollImg.delegate = self
-        scrollImg.frame = CGRect(x: 0, y: 0, width: vWidth, height: vHeight)
+        scrollImg.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         scrollImg.backgroundColor = UIColor.clear
         scrollImg.alwaysBounceVertical = false
         scrollImg.alwaysBounceHorizontal = false
@@ -97,14 +95,16 @@ public final class GTZoomableImageView: UIView {
         scrollImg.maximumZoomScale = maximumZoomScale
         scrollImg.clipsToBounds = false
         
-        self.addSubview(scrollImg)
-        
+        addSubview(scrollImg)
         scrollImg.addSubview(imageView)
         
+        setupGestureRecognizer()
+    }
+    
+    private func setupGestureRecognizer() {
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(GTZoomableImageView.autoZoom(gesture:)))
         doubleTap.numberOfTapsRequired = 2
         scrollImg.addGestureRecognizer(doubleTap)
-        
     }
     
     internal func isZoomed() -> Bool {
@@ -129,4 +129,3 @@ extension GTZoomableImageView: UIScrollViewDelegate {
         return self.imageView
     }
 }
-
