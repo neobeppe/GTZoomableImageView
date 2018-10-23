@@ -129,4 +129,3 @@ extension GTZoomableImageView: UIScrollViewDelegate {
         return self.imageView
     }
 }
-

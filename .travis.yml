@@ -1,10 +1,7 @@
 language: objective-c
-osx_image: xcode8.1
+osx_image: xcode10
 before_install:
 - gem update fastlane --no-ri --no-rdoc --no-document
 - gem update cocoapods --no-ri --no-rdoc --no-document
 script:
 - fastlane ci
-notifications:
-  slack:
-    secure: E4NMChrGsoaZwYPgyXFeLk2lJVad24vEYXmI2vD1sQs0k1SJu3K8+OedUHTsjoBx9qj2Rf5FtF1lkExgprs/aSFjSi2Sluxtt+KR6PHztwgj6ufOj8otCwXFdrWYiINO02OqxQBU1Uj2rzezBbKzNMg3+lFqy1KeliizUt2xUQh88ByAJmZYNVFE5TM8Bn4D87uK4aZP3VwzzeYnZ+9itl/q+bX1F7PDQhvA/tpIloGmIofII+Bl6No0C8aFKjzbM4j4xNDCoQczpabSIk57lHISJBkQQT4+GDLGw0/e/uZwNUX74JhUCdkbSShQCcH/kQWio6I5D5EVvexAVv60o7stDeSu0XULlfZtXkrUnWCHq9lonjxwApWdUCNfEDTFkKXbglqYPHuoR7E3hluqdJ6ccwGmnmWHfwKggkOC4wNh2OiZUB9VIOfC2TFGDHmL8aQm48gD1UmKcQKK1sG7BZkflgKhZXGCGiis/5z2PALfIWfr/NtDBFF+XYW7BDYMoUAht2rKokqwS75ElAne4ppAREW6bo8LbHyBxiRnGNFfc6luDf9zxQTYLiyTm4tXF9p4FzF8vAnFEWHpZtFPP9DehPt/bE/wOtgRQUtpprRJi310y9nBilQgsrUeDEFOEHmXJQM+B2TuTnp4EJlIxKymgTtp16clt1cIgrBm7rg=
