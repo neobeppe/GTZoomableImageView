@@ -64,7 +64,7 @@ public final class GTZoomableImageView: UIView {
         self.scrollImg.setZoomScale(minimumZoomScale, animated: animated)
     }
     
-    func autoZoom(gesture: UITapGestureRecognizer) {
+    @objc func autoZoom(gesture: UITapGestureRecognizer) {
         if scrollImg.zoomScale > minimumZoomScale {
             zoomOut()
         } else {
