@@ -38,6 +38,7 @@ public final class GTZoomableImageView: UIView {
     
     internal let imageView = UIImageView()
     private let scrollImg = UIScrollView()
+    public lazy var imageViewInset: UIEdgeInsets = .init()
     
     public func setup(image: UIImage) {
         self.image = image
@@ -46,7 +47,7 @@ public final class GTZoomableImageView: UIView {
     
     override public func layoutSubviews() {
         if !isZoomed() {
-            imageView.frame.size = self.frame.size
+            imageView.frame = bounds.inset(by: imageViewInset)
             scrollImg.frame.size = self.frame.size
         }
     }
@@ -56,7 +57,7 @@ public final class GTZoomableImageView: UIView {
     }
     
     public func zoomIn(point: CGPoint, scale: CGFloat, animated: Bool = true) {
-        let imageZoomRect = frame.size.width / scale
+        let imageZoomRect = imageView.frame.size.width / scale
         zoomIn(rect: CGRect(x: point.x - imageZoomRect / 2, y: point.y - imageZoomRect / 2, width: imageZoomRect, height: imageZoomRect), animated: animated)
     }
     
