@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "GTZoomableImageView"
-  s.version      = "1.2.0"
+  s.version      = "1.3.0"
   s.summary      = "View that implements pinch to zoom and double tap zoom gesture for a Image View"
 
   s.homepage     = "https://github.com/neobeppe/GTZoomableImageView"
@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/neobeppe/GTZoomableImageView.git", :tag => s.version.to_s }
   s.source_files  = "Sources/**/*"
   s.frameworks  = "UIKit"
-  s.swift_version = '4.2'
+  s.swift_version = '5.0'
 end
